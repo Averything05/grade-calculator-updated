@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grade Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <h1>Grade Calculator</h1>
+      <div class="topbar-right">
+        <label class="scale-picker">
+          <span>Show grades as</span>
+          <select id="scale">
+            <option value="percent">Percentage</option>
+            <option value="us">Letter / GPA (4.0)</option>
+            <option value="ph">1.0 – 5.0 scale</option>
+          </select>
+        </label>
+        <div id="account" class="account" hidden>
+          <span id="whoami" class="whoami"></span>
+          <button id="logout" type="button">Log out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p id="error" class="error" role="alert"></p>
+
+    <!-- Shown when logged out -->
+    <section id="auth" class="panel auth" hidden>
+      <div class="tabs" role="tablist" aria-label="Account">
+        <button type="button" id="tab-login" role="tab" aria-selected="true">Log in</button>
+        <button type="button" id="tab-register" role="tab" aria-selected="false">Create account</button>
+      </div>
+      <form id="auth-form">
+        <label>Username
+          <input name="username" autocomplete="username" maxlength="30" required>
+        </label>
+        <label>Password
+          <input name="password" type="password" autocomplete="current-password" maxlength="200" required>
+        </label>
+        <button type="submit" id="auth-submit" class="primary">Log in</button>
+      </form>
+      <p class="muted small">Your subjects are private to your account. Passwords are stored hashed, never as plain text.</p>
+    </section>
+
+    <!-- Shown when logged in -->
+    <div id="app" hidden>
+      <section class="intro">
+        <p>Add a subject, list its graded components with their weights, and enter scores as you get them.
+           You'll see your current grade and exactly what you need on the rest to hit your target.</p>
+      </section>
+
+      <form id="subject-form" class="panel inline-form" autocomplete="off">
+        <label>Subject
+          <input name="name" placeholder="e.g. Calculus 1" maxlength="100" required>
+        </label>
+        <label>Target %
+          <input name="target" type="number" min="0" max="100" step="any" value="80" required>
+        </label>
+        <button type="submit" class="primary">Add subject</button>
+      </form>
+
+      <section id="subjects" aria-label="Subjects"></section>
+      <p id="empty" class="muted center" hidden>No subjects yet. Add your first one above.</p>
+    </div>
+  </main>
+
+  <script src="calc.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

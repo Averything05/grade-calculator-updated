@@ -1,0 +1,16 @@
+{
+  "name": "grade-calculator",
+  "version": "1.0.0",
+  "description": "A student grade calculator: track weighted components per subject, see your current grade, and find out what you need on the finals. Zero dependencies.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "dev": "node --watch --disable-warning=ExperimentalWarning server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test \"test/*.test.js\""
+  },
+  "keywords": ["grade-calculator", "student", "sqlite", "vanilla-js", "nodejs"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.13"
+  }
+}
